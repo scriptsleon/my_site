@@ -1,92 +1,126 @@
+/* ====== Leon Scripts – GTA/Mechanic Skin v2 (pouze CSS swap) ====== */
 :root{
-  --bg:#0b0d10; --panel:#0f141b; --glass:rgba(255,255,255,.06);
-  --text:#e7edf3; --muted:#a8b3c7; --brand:#ff3d71; --brand2:#ffb86b;
-  --ring: rgba(255,61,113,.35);
+  --bg:#0b0d10; --panel:#0e1116; --panel2:#0f141b; --glass:rgba(255,255,255,.04);
+  --text:#e9eef5; --muted:#9fb0c4;
+  --accent:#ff4747;        /* červená LSC */
+  --accent2:#ffb84d;       /* teplý přechod */
+  --line:#222933; --ring:rgba(255,71,71,.35);
+  --card-radius:18px;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
   margin:0; font-family:Inter,system-ui,Arial; color:var(--text);
   background:
-    radial-gradient(1200px 600px at 10% -10%, rgba(255,61,113,.12), transparent),
-    radial-gradient(1000px 500px at 100% 0%, rgba(255,184,107,.10), transparent),
-    linear-gradient(180deg, #0b0d10, #0b0d10 40%, #0b0d10 100%);
+    radial-gradient(1000px 400px at 15% -10%, rgba(255,71,71,.10), transparent 60%),
+    radial-gradient(900px 360px at 100% 0%, rgba(255,184,77,.10), transparent 60%),
+    linear-gradient(#0a0c0f,#0a0c0f);
 }
 
+/* Top bar */
 .topbar{
-  position:sticky; top:0; backdrop-filter:saturate(160%) blur(10px);
-  background:rgba(11,13,16,.6); border-bottom:1px solid rgba(255,255,255,.06);
+  position:sticky; top:0; z-index:30;
   display:flex; align-items:center; justify-content:space-between;
-  padding:14px 22px; z-index:20;
+  padding:14px 22px;
+  background:rgba(10,12,15,.75);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid var(--line);
 }
-.brand{font-weight:800; text-decoration:none; color:var(--text); letter-spacing:.2px}
-.brand span{color:var(--brand)}
+.brand{font-weight:800; color:var(--text); text-decoration:none; letter-spacing:.2px}
+.brand span{color:var(--accent)}
 .nav a{
-  color:var(--muted); text-decoration:none; margin-left:16px; padding:6px 10px; border-radius:10px;
+  color:var(--muted); text-decoration:none; margin-left:14px; padding:8px 12px; border-radius:12px;
 }
 .nav a.active,.nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
 
-.hero{position:relative; padding:80px 22px 40px}
+/* Hero – mechanik vibe (tmavé, lehký “shop grime”) */
+.hero{position:relative; padding:84px 22px 40px; overflow:hidden}
 .hero.slim{padding:60px 22px 20px}
-.hero__content{max-width:860px; margin:0 auto}
-.hero h1{font-size:46px; line-height:1.05; margin:0 0 12px}
-.hero h1 span{background:linear-gradient(90deg,var(--brand),var(--brand2)); -webkit-background-clip:text; color:transparent}
+.hero__content{max-width:960px; margin:0 auto}
+.hero h1{font-size:50px; line-height:1.05; margin:0 0 12px}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text; color:transparent;
+}
 .hero p{color:var(--muted); font-size:18px; margin:0 0 24px}
 .cta-row{display:flex; gap:12px; flex-wrap:wrap}
-.btn{border:1px solid rgba(255,255,255,.14); padding:12px 16px; border-radius:12px; text-decoration:none; color:var(--text); display:inline-block}
-.btn.primary{background:linear-gradient(90deg,var(--brand),var(--brand2)); border:none}
-.btn.ghost:hover{border-color:rgba(255,255,255,.28)}
-.hero__glow{
-  position:absolute; inset:0; pointer-events:none;
-  background: radial-gradient(600px 200px at 50% -20%, rgba(255,61,113,.25), transparent 60%),
-              radial-gradient(400px 160px at 90% 10%, rgba(255,184,107,.18), transparent 60%);
-  z-index:-1;
-}
+.btn{padding:12px 16px; border-radius:14px; text-decoration:none; display:inline-block}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#0a0c0f; font-weight:700; border:none}
+.btn.ghost{border:1px solid rgba(255,255,255,.18); color:var(--text)}
+.btn.ghost:hover{border-color:rgba(255,255,255,.35)}
 
+/* “pit stripes” – decentní pruhy v hero */
+.hero::before, .hero::after{
+  content:""; position:absolute; inset:auto 0 0 auto; height:2px; width:100%;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255,255,255,.06) 18px 36px);
+  opacity:.35;
+}
+.hero::after{ bottom:auto; top:0; opacity:.15 }
+
+/* Layout */
 .section{padding:28px 22px}
-.grid{display:grid; gap:18px; padding:28px 22px}
+.grid{display:grid; gap:20px; padding:28px 22px}
 .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:980px){
   .grid.two,.grid.three{grid-template-columns:1fr}
-  .hero h1{font-size:36px}
+  .hero h1{font-size:38px}
 }
 
+/* Cards */
 .card{
-  background:var(--panel); border:1px solid rgba(255,255,255,.06);
-  border-radius:16px; padding:18px; position:relative;
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  background:linear-gradient(180deg, var(--panel2), var(--panel));
+  border:1px solid var(--line); border-radius:var(--card-radius);
+  padding:18px; box-shadow:0 24px 60px rgba(0,0,0,.45);
 }
-.card.glass{background:linear-gradient(180deg, var(--glass), rgba(255,255,255,.04)); backdrop-filter:blur(10px)}
+.card.glass{
+  background:linear-gradient(180deg, var(--glass), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(10px)
+}
 .card h2,.card h3{margin:0 0 10px}
 .muted{color:var(--muted)}
 .links{padding-left:16px}
 .links li{margin:6px 0}
 
+/* Discord card */
 .discord{
   border:1px solid rgba(255,255,255,.08);
-  border-radius:14px; overflow:hidden; background:#11161e;
+  border-radius:16px; overflow:hidden; background:#10151c;
 }
-.discord .banner{height:120px; background:linear-gradient(90deg,#1f2937,#0b1220)}
+.discord .banner{
+  height:120px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.3), rgba(0,0,0,0)),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><path d="M0 90 L120 90" stroke="%23ffffff0f" stroke-width="8"/><path d="M0 60 L120 60" stroke="%23ffffff0f" stroke-width="8"/><path d="M0 30 L120 30" stroke="%23ffffff0f" stroke-width="8"/></svg>') center/cover no-repeat,
+    linear-gradient(90deg,#1f2937,#0b1220);
+}
 .discord .profile{display:flex; align-items:center; gap:12px; padding:14px}
 .discord .profile img{
-  width:64px; height:64px; border-radius:50%; border:3px solid #151a22; outline:3px solid var(--ring); object-fit:cover;
+  width:64px; height:64px; border-radius:50%;
+  border:3px solid #131820; outline:3px solid var(--ring); object-fit:cover;
 }
-.discord .name{font-weight:700}
+.discord .name{font-weight:800}
 .discord .sub{color:var(--muted); font-size:14px}
 
+/* Script tags & badges */
 .script .tags{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap}
-.script .tags span{font-size:12px; color:#0b0d10; background:linear-gradient(90deg,var(--brand),var(--brand2));
-  padding:6px 8px; border-radius:999px}
+.script .tags span{
+  font-size:12px; color:#0a0c0f; font-weight:700;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  padding:6px 8px; border-radius:999px
+}
 
+/* Form */
 .form label{display:block; font-size:14px; color:var(--muted); margin:10px 0 6px}
 .form input,.form textarea{
-  width:100%; background:#0f141b; color:var(--text); border:1px solid rgba(255,255,255,.12);
-  border-radius:10px; padding:10px 12px; outline:none;
+  width:100%; background:#0f141b; color:var(--text);
+  border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:10px 12px; outline:none;
 }
-.form input:focus,.form textarea:focus{border-color:var(--brand)}
+.form input:focus,.form textarea:focus{border-color:var(--accent)}
 
+/* Footer */
 .foot{
   padding:26px 22px; display:flex; justify-content:space-between; align-items:center;
-  border-top:1px solid rgba(255,255,255,.06); color:var(--muted)
+  border-top:1px solid var(--line); color:var(--muted)
 }
