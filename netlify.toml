@@ -1,0 +1,12 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# (volitelné) hezké URL bez .html
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200

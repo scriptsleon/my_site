@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Leon Scripts – FiveM Custom Scripty</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Leon <span>Scripts</span></a>
+    <nav class="nav">
+      <a href="index.html" class="active">Úvod</a>
+      <a href="scripts.html">Scripts</a>
+      <a href="spoluprace.html">Spolupráce</a>
+      <a href="kontakt.html">Kontakty</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Moderní FiveM <span>informační centrum</span></h1>
+        <p>Ukázky, dokumentace a živé novinky k mým custom scriptům. ESX Legacy, ox_lib, ox_inventory, ox_target, oxmysql – vše nejnověji.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="scripts.html">Prohlédnout scripty</a>
+          <a class="btn ghost" href="spoluprace.html">Domluvit spolupráci</a>
+        </div>
+      </div>
+      <div class="hero__glow"></div>
+    </section>
+
+    <section class="grid two">
+      <article class="card glass">
+        <h2>Živá Discord karta</h2>
+        <p>Automaticky načítá tvoje veřejné údaje z Discordu přes bezpečnou serverless funkci.</p>
+        <div id="discord-card" class="discord">
+          <div class="banner" id="dc-banner"></div>
+          <div class="profile">
+            <img id="dc-avatar" alt="Avatar" />
+            <div>
+              <div class="name" id="dc-name">—</div>
+              <div class="sub" id="dc-sub">Discord</div>
+            </div>
+          </div>
+        </div>
+        <small class="muted">Token je chráněn na serveru (Netlify Functions). Klient nikdy nevidí tajemství.</small>
+      </article>
+
+      <article class="card">
+        <h2>Docs, které používám</h2>
+        <ul class="links">
+          <li><a target="_blank" href="https://documentation.esx-framework.org/">ESX Framework Docs</a></li>
+          <li><a target="_blank" href="https://overextended.dev/ox_lib">ox_lib</a></li>
+          <li><a target="_blank" href="https://overextended.dev/ox_inventory">ox_inventory</a></li>
+          <li><a target="_blank" href="https://overextended.dev/ox_target">ox_target</a></li>
+          <li><a target="_blank" href="https://overextended.dev/oxmysql">oxmysql</a></li>
+        </ul>
+        <p class="muted">Nejnovější patterns, žádné zastaralé funkce.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© <span id="year"></span> Leon Scripts</span>
+    <span>Deploy: Netlify</span>
+  </footer>
+</body>
+</html>

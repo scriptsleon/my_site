@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <title>Kontakty – Leon Scripts</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">Leon <span>Scripts</span></a>
+    <nav class="nav">
+      <a href="index.html">Úvod</a>
+      <a href="scripts.html">Scripts</a>
+      <a href="spoluprace.html">Spolupráce</a>
+      <a href="kontakt.html" class="active">Kontakty</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="grid two">
+      <article class="card glass">
+        <h2>Discord</h2>
+        <p class="muted">Nejrychlejší cesta ke mně. Viz živá karta:</p>
+        <div id="discord-card" class="discord">
+          <div class="banner" id="dc-banner"></div>
+          <div class="profile">
+            <img id="dc-avatar" alt="Avatar" />
+            <div>
+              <div class="name" id="dc-name">—</div>
+              <div class="sub" id="dc-sub">Discord</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Napiš mi</h2>
+        <form name="kontakt" method="POST" data-netlify="true" class="form">
+          <input type="hidden" name="form-name" value="kontakt">
+          <label>Jméno<input name="name" required></label>
+          <label>Email<input type="email" name="email" required></label>
+          <label>Zpráva<textarea name="message" rows="5" required></textarea></label>
+          <button class="btn primary" type="submit">Odeslat</button>
+        </form>
+        <small class="muted">Formulář obslouží Netlify Forms – bez backendu.</small>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>© <span id="year"></span> Leon Scripts</span>
+  </footer>
+</body>
+</html>
